@@ -71,7 +71,7 @@ const minus = (book) => {
       return;
     }
 
-    const response = await fetch("librarynode-production.up.railway.app/api/session/", {
+    const response = await fetch("https://librarynode-production.up.railway.app/api/session/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

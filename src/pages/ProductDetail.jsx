@@ -95,7 +95,7 @@ const year = now.getFullYear();
     "loanDate":  `${day}/${month}/${year}`,
     "returnDate": `${now.getDate()+8}/${month}/${year}`
   }
-   axios.post(`librarynode-production.up.railway.app/api/loans/${id}/${body.id}`,newBody)
+   axios.post(`https://librarynode-production.up.railway.app/api/loans/${id}/${body.id}`,newBody)
    .then((res)=>{
     const loans = JSON.parse(localStorage.getItem("loans"))
     if(loans){

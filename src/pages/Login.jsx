@@ -10,7 +10,7 @@ const Login = () => {
     const navigate= useNavigate()
 
     const submit=(data)=>{
-axios.post("librarynode-production.up.railway.app/api/auth/login",data)
+axios.post("https://librarynode-production.up.railway.app/api/auth/login",data)
 .then(res=> { 
 
        localStorage.setItem('token', res.data.token)
