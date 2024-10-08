@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPurchasesThunk } from '../store/slices/purchases.slice';
 import '../App.css'
 import {Link} from 'react-router-dom'
 
