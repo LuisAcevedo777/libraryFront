@@ -44,7 +44,7 @@ const ProductDetail = () => {
   };
   const plus = (book) => {
     setCount(count + 1);
-    setPric(uniqueProduct.price * (count + 1));
+    setPric(uniqueProduct[0]?.price * (count + 1));
    
     const body ={
       "author": book.author,
@@ -62,7 +62,7 @@ const ProductDetail = () => {
       setCount(0);
     } else {
       setCount(count - 1);
-      setPric(pric - uniqueProduct.price);
+      setPric(pric - uniqueProduct[0]?.price);
     }
    
      
@@ -101,7 +101,7 @@ const year = now.getFullYear();
     if(loans){
     loans.push(body)
     localStorage.setItem('loans', JSON.stringify(loans))
-    console.log('listo puchado')}
+    }
     else{localStorage.setItem('loans',JSON.stringify([]))}
    })
 
@@ -123,42 +123,42 @@ const year = now.getFullYear();
             
               <img
                 className="imgUnique"
-                src={uniqueProduct.foto}
+                src={uniqueProduct[0]?.foto}
                 alt="First slide"
               />
             
 
-            <p className="priceD">Price: {uniqueProduct.price}</p>
+            <p className="priceD">Price: {uniqueProduct[0]?.price}</p>
           </div>
         </Col>
         <Col lg={5} className="descriptionTot">
         <div className="pricValue">
             <h2>DESCRIPTION:</h2>
-            <p>{uniqueProduct.title}</p>
-            <p>{uniqueProduct.author}</p>
+            <p>{uniqueProduct[0]?.title}</p>
+            <p>{uniqueProduct[0]?.author}</p>
             
               <h2 className="pricpric">
                 <span className="priceD">Price:</span>
-                {uniqueProduct.price * count}{" "}
+                {uniqueProduct[0]?.price * count}{" "}
               </h2>
               <div className="buttonDesc">
-                <button className="count" onClick={()=>minus(uniqueProduct)}>
+                <button className="count" onClick={()=>minus(uniqueProduct[0])}>
                   
                 </button>
                 <div className="count">{count}</div>
                 <button
                   className="count"
-                  onClick={() => plus(uniqueProduct)}
+                  onClick={() => plus(uniqueProduct[0])}
                 >
                   +
                 </button>
               </div>
             </div>
-            <button onClick={()=>addToCart(uniqueProduct)} className="addToCart">
+            <button onClick={()=>addToCart(uniqueProduct[0])} className="addToCart">
               Add to Cart
             </button>
 
-            <button onClick={()=>addLoan(uniqueProduct)} className="addToCart">
+            <button onClick={()=>addLoan(uniqueProduct[0])} className="addToCart">
               Loan 
             </button>
           

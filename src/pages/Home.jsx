@@ -6,23 +6,24 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import { Card, InputGroup, Form, Row, Col, Button } from 'react-bootstrap';
 import '../App.css'
-import { setIsLoading } from '../store/slices/isLoading.slice';
 
 const Home = () => {
 
     
 
     const dispatch = useDispatch()
-    const seeProducts = useSelector(state => state.productsAll)
-
+    
+   
     useEffect(() => {
-        dispatch(setIsLoading(true))
+       
         dispatch(getProductsThunk())
-
+       
          }, [dispatch])
 
          const navigate = useNavigate()
                  const [newsSearch, setNewsSearch] = useState('') 
+                 const seeProducts = useSelector(state => state.productsAll || [])
+                
 
     return (
        
@@ -47,17 +48,16 @@ const Home = () => {
                     <Row xs={1} md={2} lg={3} className="g-4">
                         {seeProducts?.map(product => (
 
-                            //card
-
-                            <Col className='productsInHome' aria-expanded="true"  key={product.id}>
-                                <Card className='card' onClick={() => navigate(`/product/${product.id}`)}  >
-                                    <Card.Img className='imgCard' variant="top"  src={product.foto} />
+                           
+                            <Col className='productsInHome' aria-expanded="true"  key={product?.id}>
+                                <Card className='card' onClick={() => navigate(`/product/${product?.id}`)}  >
+                                    <Card.Img className='imgCard' variant="top"  src={product?.foto} />
                                     <Card.Body className='cardHome'  >
-                                        <Card.Title>{product.title}</Card.Title>
-                                        <Card.Title>{product.author}</Card.Title>
-                                        <Card.Title>{product.publicationYear}</Card.Title>
+                                        <Card.Title>{product?.title}</Card.Title>
+                                        <Card.Title>{product?.author}</Card.Title>
+                                        <Card.Title>{product?.publicationYear}</Card.Title>
 
-                                        <Card.Text className='nav1'> <span className='sp1'>Price:</span>  {product.price}   </Card.Text> 
+                                        <Card.Text className='nav1'> <span className='sp1'>Price:</span>  {product?.price}   </Card.Text> 
 
                                     </Card.Body>
                                     <button className='cartButton'><i className="fa-solid fa-book"></i></button>

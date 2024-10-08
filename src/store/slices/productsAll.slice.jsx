@@ -8,8 +8,11 @@ export const productsAllSlice = createSlice({
     reducers: {
 
         setProducts: (state, action) => {
-            const productsAll = action.payload
-            return productsAll
+            if(Array.isArray(action.payload)){
+               return action.payload}
+               else{
+                state.push(action.payload)
+            }
 
         }
     }
@@ -17,23 +20,30 @@ export const productsAllSlice = createSlice({
 
 export const getProductsThunk = () => dispatch => {
     dispatch(setIsLoading(true))
-       dispatch(setProducts(data.libros))
+    try {
+        dispatch(setProducts(data.libros)) 
         dispatch(setIsLoading(false))
+    } catch (error) {
+       throw (error) 
+    }
+       
+       
 }
 
 export const filterProductThunk = (id) => (dispatch) => {
-    dispatch(setIsLoading(true));  
-     const uniqueProduct = data.libros?.find(libro=> libro.id == id)
-     console.log(uniqueProduct)
-         dispatch(setProducts(uniqueProduct))
-     dispatch(setIsLoading(false))
+    dispatch(setIsLoading(false))
+    try{
+     let uniqueProduct = data.libros?.find(libro=> libro.id == id)
+       dispatch(setProducts([uniqueProduct]))
+     dispatch(setIsLoading(false))}
+     catch(error){throw error}
 }
 
 
 export const filterProductsTitleThunk = (title) => (dispatch) => {
     dispatch(setIsLoading(true));
-        const newList = data.libros?.filter(libro=> libro.name.includes(title))
-         dispatch(setProducts(newList))
+        const newList = data.libros?.filter(libro=> libro.title?.toLowerCase().includes(title?.toLowerCase()))
+          dispatch(setProducts(newList))
          dispatch(setIsLoading(false));
 }
 

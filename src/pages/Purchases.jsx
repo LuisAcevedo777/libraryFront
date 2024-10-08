@@ -13,7 +13,7 @@ const Purchases = () => {
     return (
         <div className='purchasesContainer'>
             <div className='linktotit1'><Link className='linkHome' to={'/'}><i className="fa-solid fa-house"></i></Link><h2>MY LOAN</h2></div>
-            {purchases.map(purch=> (
+            {purchases?.map(purch=> (
     <ul className='ulCardPurchase' key={purch.id}>
 <li className='liCardPurchase' > <Link className='linkCardPurchase' to={`/product/${purch.id}`}>
    
