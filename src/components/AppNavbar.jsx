@@ -35,7 +35,7 @@ navigate('/Login')
          
                
            
-                <Navbar.Brand as={Link} to='/' className='nav1 text-light' >Distrital Library</Navbar.Brand>
+                <Navbar.Brand as={Link} to='/' className='nav1 text-light' >District Library</Navbar.Brand>
                 <div className='nav d-flex justify-content-end fixed-top '>
          <div className='nav2'>
                     
